@@ -47,5 +47,4 @@ describe('Login - Swag Labs', () => {
         cy.get('.shopping_cart_badge').should('not.exist')
       })
 
-    it('teste 1 swag labs', function() {});
 })
