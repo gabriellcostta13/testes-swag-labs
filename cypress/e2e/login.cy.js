@@ -1,11 +1,8 @@
 describe('Login - Swag Labs', () => {
     it('CT-001: login com credenciais válidas', () => {
         cy.visit('https://www.saucedemo.com')
-        cy.get ('[data-test="username"]') .type('standard_user')
-        cy.get ('[data-test="password"]') .type('secret_sauce')
-        cy.get ('[data-test="login-button"]') .click()
-        cy.url().should('include', '/inventory')
-    });
+        cy.login('standard_user', 'secret_sauce')
+    })
 
     it('CT-002: login com senha incorreta', () => {
           cy.visit('https://www.saucedemo.com')

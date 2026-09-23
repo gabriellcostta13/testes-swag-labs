@@ -1,11 +1,9 @@
 const { defineConfig } = require("cypress");
-baseUrl: 'https://www.saucedemo.com'
 module.exports = defineConfig({
   allowCypressEnv: false,
 
   e2e: {
-    setupNodeEvents(on, config) {
+    baseUrl: 'https://www.saucedemo.com',
       // implement node event listeners here
     },
-  },
-});
+  });
