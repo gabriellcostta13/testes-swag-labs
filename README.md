@@ -1,43 +1,102 @@
-# 🧪 Testes Automatizados — Swag Labs
+# 🧪 Swag Labs — Testes Manuais e Automação com Cypress
 
-Projeto de QA desenvolvido como parte do meu portfólio profissional.
-Inclui testes manuais documentados e testes automatizados com Cypress.
+Projeto de QA focado na documentação de cenários de teste, identificação
+de defeitos e automação dos mesmos fluxos utilizando Cypress.
 
-## 🌐 Site testado
-[Swag Labs](https://www.saucedemo.com) — loja online de demonstração para prática de QA.
+## 🎯 Objetivo
 
-## 📋 Testes manuais
-5 casos de teste documentados em planilha cobrindo cenários positivos e negativos da tela de login.
+Demonstrar um fluxo prático de QA:
 
-| ID | Cenário | Tipo | Status |
-|---|---|---|---|
-| CT-001 | Login com credenciais válidas | Positivo | ✅ Passou |
-| CT-002 | Login com senha incorreta | Negativo | ✅ Passou |
-| CT-003 | Login com campos vazios | Negativo | ✅ Passou |
-| CT-004 | Imagens repetidas com problem_user | Negativo | ❌ Bug encontrado |
-| CT-005 | Botão Remove inoperante com error_user | Negativo | ❌ Bug encontrado |
+**Cenário manual → Execução → Identificação do defeito → Documentação →
+Automação**
 
-## 🐛 Bugs encontrados
-- **BUG-001:** No CT-004 todas as imagens dos produtos são idênticas para o `problem_user`
-- **BUG-002:** No CT-005 o botão "Remove" não funciona na página de produtos para o `error_user`
+O projeto utiliza a aplicação [Swag Labs](https://www.saucedemo.com/)
+como sistema sob teste.
 
-## 🤖 Testes automatizados
-Testes E2E desenvolvidos com Cypress cobrindo os mesmos cenários da planilha manual.
+## 🧪 Cenários de teste
 
-**Resultado da execução:**
-- ✅ 3 testes passaram
-- ❌ 2 testes falharam (confirmando os bugs documentados)
+| ID     | Cenário                                      | Resultado           |
+|--------|----------------------------------------------|---------------------|
+| CT-001 | Login com credenciais válidas                | Passa               |
+| CT-002 | Login com senha inválida                     | Passa               |
+| CT-003 | Login com campos vazios                      | Passa               |
+| CT-004 | Verificação das imagens com `problem_user`   | Defeito reproduzido |
+| CT-005 | Verificação do botão Remove com `error_user` | Defeito reproduzido |
+
+## 🐞 Defeitos identificados
+
+### BUG-001 — Imagens inconsistentes com `problem_user`
+
+**Cenário:** acesso utilizando o usuário `problem_user`.
+
+**Comportamento observado:** as imagens apresentadas nos produtos não
+possuem o comportamento esperado de diferenciação entre os itens.
+
+**Impacto:** pode comprometer a identificação visual dos produtos.
+
+### BUG-002 — Botão Remove com comportamento incorreto
+
+**Cenário:** acesso utilizando o usuário `error_user`.
+
+**Comportamento observado:** o botão `Remove` não apresenta o
+comportamento esperado durante a interação com o produto.
+
+**Impacto:** interfere no fluxo de gerenciamento dos itens do carrinho.
+
+## 🤖 Automação
+
+Os cenários documentados foram transformados em testes automatizados com
+Cypress, incluindo os cenários que reproduzem os defeitos encontrados.
+
+### Estrutura
+
+``` text
+cypress/
+├── e2e/
+│   └── login.cy.js
+└── support/
+    └── commands.js
+```
 
 ## 🛠️ Tecnologias
-- [Cypress](https://www.cypress.io/) v15
+
+- Cypress
 - JavaScript
 - Node.js
+- Git/GitHub
 
-## ▶️ Como rodar os testes
-\```bash
+## 🚀 Executando os testes
+
+Instale as dependências:
+
+``` bash
 npm install
-npx cypress open
-\```
+```
 
-## 👨‍💻 Autor
-Gabriel — estudante de QA em desenvolvimento
+Abra o Cypress:
+
+``` bash
+npx cypress open
+```
+
+Execute em modo headless:
+
+``` bash
+npx cypress run
+```
+
+## 📌 O que este projeto demonstra
+
+- Elaboração de cenários de teste
+- Testes de login
+- Validação de comportamento da aplicação
+- Identificação e documentação de defeitos
+- Automação de testes de UI
+- Reprodução automatizada de bugs
+- Organização de testes com Cypress
+
+## 👤 Autor
+
+**Gabriel Costa \| Quality Assurance (QA)**
+
+[GitHub](https://github.com/gabriellcostta13)
