@@ -2,7 +2,7 @@ describe('Login - Swag Labs', () => {
     it('CT-001: login com credenciais válidas', () => {
         cy.visit('https://www.saucedemo.com')
         cy.login('standard_user', 'secret_sauce')
-        cy.url().should('include', '/dashboard')
+        cy.url().should('include', '/inventory')
     });
 
     it('CT-002: login com senha incorreta', () => {
@@ -20,7 +20,7 @@ describe('Login - Swag Labs', () => {
 
     it('CT-004: validar imagens repetidas nos produtos', () => {
         cy.visit('https://www.saucedemo.com')
-        cy.login('standard_user', 'secret_sauce')
+        cy.login('problem_user', 'secret_sauce')
         const images = []
         cy.get('.inventory_item_img img').each(($img) => {
             const src = $img.attr('src')
@@ -32,7 +32,7 @@ describe('Login - Swag Labs', () => {
 
     it ('CT-005: botão Remove não remove produto para error_user',()=> {
         cy.visit('https://www.saucedemo.com')
-        cy.login('standard_user', 'secret_sauce')
+        cy.login('error_user', 'secret_sauce')
         cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
         cy.get('.shopping_cart_badge').should('contain','1')
         cy.get('[data-test="remove-sauce-labs-backpack"]').click()
